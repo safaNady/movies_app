@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movies_app/core/assets_manager.dart';
 import 'package:movies_app/core/colors_manager.dart';
 import 'package:movies_app/core/strings_manager.dart';
-import 'package:movies_app/presentation/screens/home/tabs/browse/browse_tab.dart';
+import 'package:movies_app/presentation/screens/home/tabs/browse/view/browse_tab_view.dart';
 import 'package:movies_app/presentation/screens/home/tabs/home/home_tab.dart';
 import 'package:movies_app/presentation/screens/home/tabs/search/search_tab.dart';
 import 'package:movies_app/presentation/screens/home/tabs/watch_list/watch_tab.dart';
@@ -19,7 +19,8 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Widget> tabs = [
     HomeTab(),
     SearchTab(),
-    BrowseTab(),
+    BrowseTabView(),
+    // BrowseTab(),
     WatchTab(),
   ];
 
