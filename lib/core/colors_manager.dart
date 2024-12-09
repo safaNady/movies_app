@@ -7,4 +7,5 @@ class ColorsManager {
   static const Color bottomBar = Color(0xFF1A1A1A);
   static const Color selectedIcon = Color(0xFFFFBB3B);
   static const Color unselectedIcon = Color(0xFFC6C6C6);
+  static const Color appBarSearch = Color(0xFF514F4F);
 }
