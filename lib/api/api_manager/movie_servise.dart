@@ -28,4 +28,28 @@ class MovieService {
   Future<List<dynamic>> fetchTopRatedMovies() {
     return fetchMovies("/movie/top_rated");
   }
+
+  Future<List<dynamic>> fetchCategories() async {
+    final url = "$baseUrl/genre/movie/list?api_key=$apiKey&language=en-US";
+    final response = await http.get(Uri.parse(url));
+
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      return data['genres'] as List<dynamic>; // Ensure you return the 'genres' list
+    } else {
+      throw Exception("Failed to load categories");
+    }
+  }
+
+  Future<List<dynamic>> fetchMoviesByCategoryId(int genreId) async {
+    final url = "$baseUrl/discover/movie?api_key=$apiKey&with_genres=$genreId&language=en-US&page=1";
+    final response = await http.get(Uri.parse(url));
+
+    if (response.statusCode == 200) {
+      return json.decode(response.body)['results'];
+    } else {
+      throw Exception("Failed to load movies by category");
+    }
+  }
+
 }
