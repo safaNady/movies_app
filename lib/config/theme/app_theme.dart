@@ -6,7 +6,7 @@ class AppTheme {
   static ThemeData movieTheme = ThemeData(
     scaffoldBackgroundColor: Colors.transparent,
     appBarTheme: AppBarTheme(
-        color: ColorsManager.blackAccent,
+        color: ColorsManager.appBar,
         titleTextStyle: AppTextStyles.appBar),
 
 
