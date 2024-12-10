@@ -51,4 +51,44 @@ class MovieService {
     }
   }
 
+  Future<Map<String, dynamic>> fetchMovieDetails(int movieId) async {
+    final url = "$baseUrl/movie/$movieId?api_key=$apiKey&language=en-US";
+    final response = await http.get(Uri.parse(url));
+
+    if (response.statusCode == 200) {
+      return json.decode(response.body);
+    } else {
+      throw Exception("Failed to load movie details");
+    }
+  }
+
+  Future<List<dynamic>> fetchSimilarMovies(int movieId) async {
+    final url = "$baseUrl/movie/$movieId/similar?api_key=$apiKey&language=en-US&page=1";
+    final response = await http.get(Uri.parse(url));
+
+    if (response.statusCode == 200) {
+      return json.decode(response.body)['results'];
+    } else {
+      throw Exception("Failed to load similar movies");
+    }
+  }
+
+  Future<String?> fetchTrailerVideoKey(int movieId) async {
+    final response = await http.get(Uri.parse('https://api.themoviedb.org/3/movie/$movieId/videos?api_key=$apiKey'));
+
+    if (response.statusCode == 200) {
+      final results = json.decode(response.body)['results'] as List<dynamic>;
+      if (results.isNotEmpty) {
+        final trailer = results.firstWhere(
+              (video) => video['type'] == 'Trailer' && video['site'] == 'YouTube',
+          orElse: () => null,
+        );
+        return trailer?['key'];
+      }
+    } else {
+      throw Exception('Failed to load trailer videos');
+    }
+    return null;
+  }
+
 }

@@ -39,14 +39,14 @@ class _HomeTabState extends State<HomeTab> {
                 } else if (snapshot.hasError) {
                   return Center(child: Text("Error: ${snapshot.error}"));
                 } else if (snapshot.hasData) {
-                  return buildCarousel(snapshot.data!);
+                  return buildCarousel(snapshot.data!,context);
                 } else {
                   return const Center(child: Text("No movies available."));
                 }
               },
             ),
-            buildMovieList("New Releases", upcomingMoviesFuture),
-            buildMovieList("Recommended", topRatedMoviesFuture),
+            buildMovieList("New Releases", upcomingMoviesFuture,context),
+            buildMovieList("Recommended", topRatedMoviesFuture,context),
           ],
         ),
       ),
