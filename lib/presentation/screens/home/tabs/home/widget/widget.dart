@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/colors_manager.dart';
 import 'package:movies_app/presentation/screens/movie_details/view/movie_details_view.dart';
+import 'package:movies_app/presentation/widgets/movie_image_with_add_btn.dart';
 
 Widget buildCarousel(List<dynamic> movies, BuildContext context) {
   return CarouselSlider.builder(
@@ -21,11 +23,17 @@ Widget buildCarousel(List<dynamic> movies, BuildContext context) {
         },
         child: ClipRRect(
           borderRadius: BorderRadius.circular(10.0),
-          child: Image.network(
-            imageUrl,
-            fit: BoxFit.cover,
-            width: double.infinity,
-          ),
+           child:
+           MovieImageWithAddButton(
+               imageUrl: imageUrl,
+               onAddPressed: (){},
+               imageWidth: double.infinity,
+               imageHeight: 215.h)
+      //Image.network(
+          //   imageUrl,
+          //   fit: BoxFit.cover,
+          //   width: double.infinity,
+          // ),
         ),
       );
     },
@@ -63,7 +71,7 @@ Widget buildMovieList(String title, Future<List<dynamic>> moviesFuture, BuildCon
           } else if (snapshot.hasData) {
             final movies = snapshot.data!;
             return SizedBox(
-              height: 150,
+              height: 180,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: movies.length,
@@ -88,14 +96,19 @@ Widget buildMovieList(String title, Future<List<dynamic>> moviesFuture, BuildCon
                           children: [
                             ClipRRect(
                               borderRadius: BorderRadius.circular(8.0),
-                              child: Image.network(
-                                imageUrl,
-                                fit: BoxFit.cover,
-                                width: 100,
-                                height: 140,
-                              ),
+                              child:MovieImageWithAddButton(
+                                  imageUrl: imageUrl,
+                                  onAddPressed: (){},
+                                  imageWidth: 100.w,
+                                  imageHeight: 170.h)
+                              // Image.network(
+                              //   imageUrl,
+                              //   fit: BoxFit.cover,
+                              //   width: 100,
+                              //   height: 140,
+                              // ),
                             ),
-                            const SizedBox(height: 5),
+                            const SizedBox(height: 8),
                             Text(
                               movie['title'],
                               style: const TextStyle(fontSize: 12),

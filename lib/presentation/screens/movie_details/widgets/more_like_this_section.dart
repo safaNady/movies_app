@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/config/theme/app_style.dart';
 import 'package:movies_app/core/colors_manager.dart';
 import 'package:movies_app/presentation/screens/movie_details/view/movie_details_view.dart';
+import 'package:movies_app/presentation/widgets/movie_image_with_add_btn.dart';
 
 class MoreLikeThisSection extends StatelessWidget {
   final Future<List<dynamic>> similarMoviesFuture;
@@ -65,37 +66,13 @@ class MoreLikeThisSection extends StatelessWidget {
                             padding: REdgeInsets.symmetric(horizontal: 8.w),
                             child: Column(
                               children: [
-                                Stack(
-                                  children: [
-                                    // Movie Poster
-                                    Image.network(
-                                      'https://image.tmdb.org/t/p/w500${movie['poster_path'] ?? ''}',
-                                      width: 100.w,
-                                      height: 150.h,
-                                      fit: BoxFit.cover,
-                                    ),
-                                    // Add Icon at top-left corner
-                                    Positioned(
-                                      top: 4.w,
-                                      left: 4.w,
-                                      child: GestureDetector(
-                                        onTap: () {},
-                                        child: Container(
-                                          width: 24.w,
-                                          height: 24.w,
-                                          decoration: const BoxDecoration(
-                                            color: Color.fromRGBO(255, 255, 255, 0.5),
-                                            shape: BoxShape.circle,
-                                          ),
-                                          child: Icon(
-                                            Icons.add,
-                                            color: Colors.white,
-                                            size: 16.sp,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
+                                MovieImageWithAddButton(
+                                  imageUrl: 'https://image.tmdb.org/t/p/w500${movie['poster_path'] ?? ''}',
+                                  onAddPressed: () {
+                                    // Add to watch list
+                                  },
+                                  imageWidth: 100.w,
+                                  imageHeight: 150.h,
                                 ),
                                 SizedBox(height: 8.h),
                                 Expanded(
