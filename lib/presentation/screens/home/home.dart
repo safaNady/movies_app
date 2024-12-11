@@ -3,7 +3,7 @@ import 'package:movies_app/core/assets_manager.dart';
 import 'package:movies_app/core/colors_manager.dart';
 import 'package:movies_app/core/strings_manager.dart';
 import 'package:movies_app/presentation/screens/home/tabs/browse/view/browse_tab_view.dart';
-import 'package:movies_app/presentation/screens/home/tabs/home/home_tab.dart';
+import 'package:movies_app/presentation/screens/home/tabs/home/view/home_tab.dart';
 import 'package:movies_app/presentation/screens/home/tabs/search/search_tab.dart';
 import 'package:movies_app/presentation/screens/home/tabs/watch_list/watch_tab.dart';
 
