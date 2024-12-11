@@ -1,8 +1,9 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:movies_app/core/colors_manager.dart';
+import 'package:movies_app/presentation/screens/movie_details/view/movie_details_view.dart';
 
-Widget buildCarousel(List<dynamic> movies) {
+Widget buildCarousel(List<dynamic> movies, BuildContext context) {
   return CarouselSlider.builder(
     itemCount: movies.length,
     itemBuilder: (context, index, realIndex) {
@@ -10,7 +11,14 @@ Widget buildCarousel(List<dynamic> movies) {
       final imageUrl = "https://image.tmdb.org/t/p/w500${movie['poster_path']}";
 
       return GestureDetector(
-        onTap: () {},
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => MovieDetailsView(movieId: movie['id']),
+            ),
+          );
+        },
         child: ClipRRect(
           borderRadius: BorderRadius.circular(10.0),
           child: Image.network(
@@ -31,7 +39,7 @@ Widget buildCarousel(List<dynamic> movies) {
   );
 }
 
-Widget buildMovieList(String title, Future<List<dynamic>> moviesFuture) {
+Widget buildMovieList(String title, Future<List<dynamic>> moviesFuture, BuildContext context) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -64,28 +72,38 @@ Widget buildMovieList(String title, Future<List<dynamic>> moviesFuture) {
                   final imageUrl =
                       "https://image.tmdb.org/t/p/w200${movie['poster_path']}";
 
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(8.0),
-                            child: Image.network(
-                              imageUrl,
-                              fit: BoxFit.cover,
-                              width: 100,
-                              height: 140,
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MovieDetailsView(movieId: movie['id']),
+                        ),
+                      );
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(8.0),
+                              child: Image.network(
+                                imageUrl,
+                                fit: BoxFit.cover,
+                                width: 100,
+                                height: 140,
+                              ),
                             ),
-                          ),
-                          const SizedBox(height: 5),
-                          Text(
-                            movie['title'],
-                            style: const TextStyle(fontSize: 12),
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                          ),
-                        ],
+                            const SizedBox(height: 5),
+                            Text(
+                              movie['title'],
+                              style: const TextStyle(fontSize: 12),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   );
