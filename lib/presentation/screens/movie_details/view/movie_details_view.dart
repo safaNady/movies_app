@@ -57,6 +57,7 @@ class MovieDetailsView extends StatelessWidget {
                                 genres: genres,
                                 overview: movieDetails['overview'] ?? 'No description available.',
                                 rating: (movieDetails['vote_average'] ?? 0).toDouble(),
+                                onAddToWatchlist: () {},
                               ),
                               MoreLikeThisSection(
                                 similarMoviesFuture: viewModel.similarMoviesFuture,

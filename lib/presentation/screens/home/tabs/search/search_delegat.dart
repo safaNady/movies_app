@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:movies_app/core/colors_manager.dart';
@@ -57,7 +58,7 @@ class Search extends SearchDelegate {
   @override
   Widget buildResults(BuildContext context) {
     return Container(
-      color: ColorsManager.black,
+      color: ColorsManager.white,
       child: FutureBuilder<List<dynamic>>(
         future: search(query),
         builder: (context, snapshot) {

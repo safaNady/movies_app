@@ -23,7 +23,6 @@ class SearchTab extends StatelessWidget {
           child: TextField(
             style: TextStyle(color: ColorsManager.white),
             decoration: InputDecoration(
-              hintText: 'Search',
               hintStyle: TextStyle(color: ColorsManager.white),
               prefixIcon: IconButton(
                 onPressed: () {

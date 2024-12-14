@@ -5,6 +5,8 @@ import 'package:movies_app/presentation/screens/splash/splash.dart';
 class RoutesManager {
   static const String splash = '/splash';
   static const String home = '/home';
+  static const String watchListRoute = "/watchlist";
+  static const String movieDetails = "/movie";
 
   static Route? router(RouteSettings settings) {
     switch (settings.name) {
