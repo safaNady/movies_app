@@ -7,7 +7,12 @@ import 'package:movies_app/presentation/widgets/movie_image_with_add_btn.dart';
 class Movie extends StatelessWidget {
   final Map<String, dynamic> movie;
 
-  const Movie({super.key, required this.movie});
+  const Movie(
+      {super.key, required this.movie, required title, required posterUrl});
+
+  String get title => title;
+
+  String get posterUrl => posterUrl;
 
   @override
   Widget build(BuildContext context) {

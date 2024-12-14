@@ -20,8 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
     HomeTab(),
     SearchTab(),
     BrowseTabView(),
-    // BrowseTab(),
-    WatchTab(),
+    WatchTabScreen(),
   ];
 
   @override

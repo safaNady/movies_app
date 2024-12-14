@@ -10,6 +10,7 @@ class MovieDetailCard extends StatelessWidget {
   final String genres;
   final String overview;
   final double rating;
+  final VoidCallback onAddToWatchlist;
 
   const MovieDetailCard({
     Key? key,
@@ -19,6 +20,7 @@ class MovieDetailCard extends StatelessWidget {
     required this.genres,
     required this.overview,
     required this.rating,
+    required this.onAddToWatchlist,
   }) : super(key: key);
 
   @override
@@ -59,7 +61,9 @@ class MovieDetailCard extends StatelessWidget {
                     top: 4.w,
                     left: 4.w,
                     child: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        onAddToWatchlist();
+                      },
                       child: Container(
                         width: 24.w,
                         height: 24.w,
@@ -67,10 +71,15 @@ class MovieDetailCard extends StatelessWidget {
                           color: Color.fromRGBO(255, 255, 255, 0.5),
                           shape: BoxShape.circle,
                         ),
-                        child: Icon(
-                          Icons.add,
-                          color: Colors.white,
-                          size: 16.sp,
+                        child: InkWell(
+                          onTap: () {
+                            onAddToWatchlist();
+                          },
+                          child: Icon(
+                            Icons.add,
+                            color: Colors.white,
+                            size: 16.sp,
+                          ),
                         ),
                       ),
                     ),
@@ -115,3 +124,4 @@ class MovieDetailCard extends StatelessWidget {
     );
   }
 }
+

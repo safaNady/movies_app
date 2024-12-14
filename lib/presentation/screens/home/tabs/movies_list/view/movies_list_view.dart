@@ -35,7 +35,11 @@ class MoviesListView extends StatelessWidget {
               itemCount: movies.length,
               itemBuilder: (context, index) {
                 final movie = movies[index];
-                return Movie(movie: movie);
+                return Movie(
+                  movie: movie,
+                  title: movie,
+                  posterUrl: index,
+                );
               },
             );
           },
